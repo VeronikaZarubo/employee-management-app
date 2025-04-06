@@ -1,6 +1,3 @@
 ﻿  IT Employees Management System.cpp
-C:\Documents\Documents\Studia\4\С++\IT Employees Management System\IT Employees Management System.cpp(53,21): warning C4129: 'E': unrecognized character escape sequence
-C:\Documents\Documents\Studia\4\С++\IT Employees Management System\IT Employees Management System.cpp(66,13): warning C4129: 'E': unrecognized character escape sequence
-C:\Documents\Documents\Studia\4\С++\IT Employees Management System\IT Employees Management System.cpp(155,21): warning C4129: 'E': unrecognized character escape sequence
-C:\Documents\Documents\Studia\4\С++\IT Employees Management System\IT Employees Management System.cpp(172,17): warning C4129: 'E': unrecognized character escape sequence
-  IT Employees Management System.vcxproj -> C:\Documents\Documents\Studia\4\С++\IT Employees Management System\x64\Debug\IT Employees Management System.exe
+C:\Documents\Documents\Studia\4\С++\Employee Management System\IT Employees Management System.cpp(124,28): warning C4101: 'positionNumber': unreferenced local variable
+  IT Employees Management System.vcxproj -> C:\Documents\Documents\Studia\4\С++\Employee Management System\x64\Debug\IT Employees Management System.exe

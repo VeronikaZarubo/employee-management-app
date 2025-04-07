@@ -138,49 +138,40 @@ void addNewEmployee(vector<Employee>& employee) {
     cout << "Enter Work Experience In Years : ";
     cin >> workYears;
 
-    /////////
-    //cout << "\t-------------Choose A Position Number : " << endl;
-    //cout << "\t\t\t1. CEO" << endl;
-    //cout << "\t\t\t2. Analytics" << endl;
-    //cout << "\t\t\t3. Developer" << endl;
-    //cout << "\t\t\t4. Tester" << endl;
-    //cout << "\t\t\t5. HR" << endl;
-    //cout << "\t\t\t6. Exit" << endl;
-    //cout << "Enter Position : ";
-    //cin >> positionNumber;
+    cout << "\t-------------Choose A Position Number : " << endl;
+    cout << "\t\t\t1. CEO" << endl;
+    cout << "\t\t\t2. Analytics" << endl;
+    cout << "\t\t\t3. Developer" << endl;
+    cout << "\t\t\t4. Tester" << endl;
+    cout << "\t\t\t5. HR" << endl;
+    cout << "\t\t\t6. Exit" << endl;
+    cout << "Enter Position : ";
+    cin >> positionNumber;
+    
+    switch(positionNumber){
+    case 1: 
+        position = "CEO";
+        break;
+    case 2: 
+        position = "Analytics";
+        break;
+    case 3: 
+        position = "Developer";
+        break; 
+    case 4: 
+        position = "Tester";
+        break;
+    case 5: 
+        position = "HR";
+        break;
+    case 6: 
+        return;
+    default:
+        cout << "\t\tInvalid Number" << endl;
+        return;
+    }
 
-    //switch(positionNumber){
-    //    case 1: {
-    //        position = "CEO";
-    //        break;
-    //    }
-    //    case 2: {
-    //        position = "Analytics";
-    //        break;
-    //    }
-    //    case 3: {
-    //        position = "Developer";
-    //        break;
-    //    } 
-    //    case 4: {
-    //        position = "Tester";
-    //        break;
-    //    }
-    //    case 5: {
-    //        position = "HR";
-    //        break;
-    //    }
-    //    case 6: {
-    //        exit(1);
-    //    }
-    //    default:
-    //        cout << "\t\tInvalid Number" << endl;
-    //}
-    //cin >> position;
-
-    ///////
-
-    Employee newEmployee(rollno, fullName, workYears, "Developer");
+    Employee newEmployee(rollno, fullName, workYears, position);
     employee.push_back(newEmployee);
 
     cout << "\t\tEmployee Add Successfully..." << endl;

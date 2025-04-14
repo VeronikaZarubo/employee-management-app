@@ -2,23 +2,25 @@
 //
 
 #include <iostream>
-#include <vector>
 #include <string>
+#include <vector>
 using namespace std;
 
-class AbstractEmployee {
+class IAbstractEmployee{
+public:
     virtual void AskForPromotion() = 0;
 };
 
-class Employee : AbstractEmployee {
+class Employee : public IAbstractEmployee {
 protected:
     int rollno, workYears;
-    string fullName, position;
+    string name, surname, position;
 
 public:
-    Employee(int stdRollno, string stdfullName, int stdWorkYears, string stdPosition) {
+    Employee(int stdRollno, string stdName, string stdSurname, int stdWorkYears, string stdPosition) {
         rollno = stdRollno;
-        fullName = stdfullName;
+        name = stdName;
+        surname = stdSurname;
         workYears = stdWorkYears;
         position = stdPosition;
     }
@@ -28,11 +30,17 @@ public:
     int getRollno() {
         return rollno;
     }
-    void setfullName(string stdfullName) {
-        fullName = stdfullName;
+    void setName(string stdName) {
+        name = stdName;
     }
-    string getfullName() {
-        return fullName;
+    string getName() {
+        return name;
+    }
+    void setSurname(string stdSurname) {
+        surname = stdSurname;
+    }
+    string getSurname() {
+        return surname;
     }
     void setPosition(string stdPosition) {
         position = stdPosition;
@@ -47,72 +55,69 @@ public:
         return workYears;
     }
     void Work() {
-        cout << fullName << " is working..." << endl;        
+        cout << name << " " << surname << " is working..." << endl;
     }
-    void AskForPromotion() {
+    void AskForPromotion() override {
         if (position == "CEO")
-            cout << "Max position reached! No promotion for " << fullName << " available." << endl;
+            cout << "Max position reached! No promotion for " << name << " available." << endl;
         else if (workYears > 3)
-            cout << fullName << " got promoted!!" << endl;
+            cout << name << " " << surname << " got promoted!!" << endl;
         else
-            cout << fullName << " sorry, no promotion for you.." << endl;
+            cout << name << " " << surname << " sorry, no promotion for you.." << endl;
     };
     void displayEmployee(){
         cout << "Roll No : " << rollno << endl;
-        cout << "Full Name : " << fullName << endl;
+        cout << "Name : " << name << endl;
+        cout << "Surname : " << surname << endl;
         cout << "Work Experience In Years : " << workYears << endl;
         cout << "Position : " << position << endl;
     }
 };
 
-// CEO, Analytics, Developer, Tester, HR classes   |
-//                                                \|/
+// CEO, Analyst, Developer, Tester, HR classes   |
+//                                              \|/
 class CEO :public Employee {
 public:
-    CEO(int rollno, string fullName, int workYears, string position) :
-        Employee(rollno, fullName, workYears, position) {};
+    CEO(int rollno, string name, string surname, int workYears, string position) :
+        Employee(rollno, name, surname, workYears, position) {}
     void Work() {
-        cout << fullName << " is making corporate decisions, managing operations..." << endl;
+        cout << name << " " << surname << " is making corporate decisions, managing operations..." << endl;
     }
 };
 
-class Analytics :public Employee {
+class Analyst :public Employee {
 public:
-    Analytics(int rollno, string fullName, int workYears, string position) :
-        Employee(rollno, fullName, workYears, position) {
-    };
+    Analyst(int rollno, string name, string surname, int workYears, string position) :
+        Employee(rollno, name, surname, workYears, position) {}
     void Work() {
-        cout << fullName << " is using math, statistics, and machine learning to find meaningful patterns in data..." << endl;
+        cout << name << " " << surname << " is using math, statistics, and machine learning to find meaningful patterns in data..." << endl;
     }
 };
 
 class Developer :public Employee {
 public:
-    Developer(int rollno, string fullName, int workYears, string position) :
-        Employee(rollno, fullName, workYears, position) {
-    };
+    Developer(int rollno, string name, string surname, int workYears, string position) :
+        Employee(rollno, name, surname, workYears, position) {}
     void Work() {
-        cout << fullName << " is designing, programming, building, deploying and maintaining software..." << endl;
+        cout << name << " " << surname << " is designing, programming, building, deploying and maintaining software..." << endl;
     }
 };
 
 class Tester :public Employee {
 public:
-    Tester(int rollno, string fullName, int workYears, string position) :
-        Employee(rollno, fullName, workYears, position) {
-    };
+    Tester(int rollno, string name, string surname, int workYears, string position) :
+        Employee(rollno, name, surname, workYears, position) {}
     void Work() {
-        cout << fullName << " is running various tests on software systems to ensure that they function according to the required standards..." << endl;
+        cout << name << " " << surname << " is running various tests on software systems to ensure that they function according to the required standards..." << endl;
     }
 };
 
 class HR :public Employee {
 public:
-    HR(int rollno, string fullName, int workYears, string position) :
-        Employee(rollno, fullName, workYears, position) {
-    };
+    HR(int rollno, string name, string surname, int workYears, string position) :
+        Employee(rollno, name, surname, workYears, position) {}
     void Work() {
-        cout << fullName << " is managing the entire employee lifecycle — recruitment, onboarding, training, termination or retirement..." << endl;
+        cout << name << " " << surname << " is managing the entire employee lifecycle — recruitment, onboarding, training, termination or retirement..." << endl;
     }
 };
                                      
@@ -122,7 +127,7 @@ public:
 
 void addNewEmployee(vector<Employee>& employee) {
     int rollno, workYears, positionNumber;
-    string fullName, position;
+    string name, surname, position;
     cout << "Enter Rollno : " << endl;
     cin >> rollno;
 
@@ -133,14 +138,16 @@ void addNewEmployee(vector<Employee>& employee) {
         }
     };
 
-    cout << "Enter Full Name : ";
-    cin >> fullName;
+    cout << "Enter Name : ";
+    cin >> name;
+    cout << "Enter Surname : ";
+    cin >> surname;
     cout << "Enter Work Experience In Years : ";
     cin >> workYears;
 
     cout << "\t-------------Choose A Position Number : " << endl;
     cout << "\t\t\t1. CEO" << endl;
-    cout << "\t\t\t2. Analytics" << endl;
+    cout << "\t\t\t2. Analyst" << endl;
     cout << "\t\t\t3. Developer" << endl;
     cout << "\t\t\t4. Tester" << endl;
     cout << "\t\t\t5. HR" << endl;
@@ -153,7 +160,7 @@ void addNewEmployee(vector<Employee>& employee) {
         position = "CEO";
         break;
     case 2: 
-        position = "Analytics";
+        position = "Analyst";
         break;
     case 3: 
         position = "Developer";
@@ -171,7 +178,7 @@ void addNewEmployee(vector<Employee>& employee) {
         return;
     }
 
-    Employee newEmployee(rollno, fullName, workYears, position);
+    Employee newEmployee(rollno, name, surname, workYears, position);
     employee.push_back(newEmployee);
 
     cout << "\t\tEmployee Add Successfully..." << endl;
@@ -189,23 +196,23 @@ void displayAllEmployee(vector<Employee>& employee) {
         employee[i].AskForPromotion();
 
         if (employee[i].getPosition() == "CEO") {
-            CEO c = CEO(employee[i].getRollno(), employee[i].getfullName(), employee[i].getWorkYears(), employee[i].getPosition());
+            CEO c = CEO(employee[i].getRollno(), employee[i].getName(), employee[i].getSurname(), employee[i].getWorkYears(), employee[i].getPosition());
             c.Work();
         }            
-        else if (employee[i].getPosition() == "Analytics") {
-            Analytics a = Analytics(employee[i].getRollno(), employee[i].getfullName(), employee[i].getWorkYears(), employee[i].getPosition());
+        else if (employee[i].getPosition() == "Analyst") {
+            Analyst a = Analyst(employee[i].getRollno(), employee[i].getName(), employee[i].getSurname(), employee[i].getWorkYears(), employee[i].getPosition());
             a.Work();
         }
         else if (employee[i].getPosition() == "Developer") {
-            Developer d = Developer(employee[i].getRollno(), employee[i].getfullName(), employee[i].getWorkYears(), employee[i].getPosition());
+            Developer d = Developer(employee[i].getRollno(), employee[i].getName(), employee[i].getSurname(), employee[i].getWorkYears(), employee[i].getPosition());
             d.Work();
         }
         else if (employee[i].getPosition() == "Tester") {
-            Tester t = Tester(employee[i].getRollno(), employee[i].getfullName(), employee[i].getWorkYears(), employee[i].getPosition());
+            Tester t = Tester(employee[i].getRollno(), employee[i].getName(), employee[i].getSurname(), employee[i].getWorkYears(), employee[i].getPosition());
             t.Work();
         }
         else {
-            HR hr = HR(employee[i].getRollno(), employee[i].getfullName(), employee[i].getWorkYears(), employee[i].getPosition());
+            HR hr = HR(employee[i].getRollno(), employee[i].getName(), employee[i].getSurname(), employee[i].getWorkYears(), employee[i].getPosition());
             hr.Work();
         }
     }
@@ -226,24 +233,25 @@ void searchEmployee(vector<Employee>& employee) {
 }
 
 void updateEmployee(vector<Employee>& employee) {
-    string fullName;
+    string fullname;
     bool found = false;
     int choice;
 
     cout << "\t\tEnter Full Name to Update Record : ";
     cin.ignore();
-    getline(cin, fullName);
+    getline(cin, fullname);
 
     for (int i = 0; i < employee.size();i++) {
-        if (employee[i].getfullName() == fullName) {
+        if ((employee[i].getName()+' '+employee[i].getSurname()) == fullname) {
             found = true;
 
             cout << "\t\t------- Employee Found -------" << endl;
             cout << "\t\t\t1. Update Rollno" << endl;
-            cout << "\t\t\t2. Update Full Name" << endl;
-            cout << "\t\t\t3. Update Work Experience In Years" << endl;
-            cout << "\t\t\t4. Update Position" << endl;
-            cout << "\t\tEnter your Choice : " << endl;
+            cout << "\t\t\t2. Update Name" << endl;
+            cout << "\t\t\t3. Update Surname" << endl;
+            cout << "\t\t\t4. Update Work Experience In Years" << endl;
+            cout << "\t\t\t5. Update Position" << endl;
+            cout << "\t\tEnter your Choice : ";
             cin >> choice;
 
             switch (choice) {
@@ -255,21 +263,29 @@ void updateEmployee(vector<Employee>& employee) {
                     break;
                     }                    
                 case 2: {
-                    string fullName;
-                    cout << "\t\t\t2. Enter New Full Name : ";
+                    string name;
+                    cout << "\t\t\t2. Enter New Name : ";
                     cin.ignore();
-                    getline(cin, fullName);
-                    employee[i].setfullName(fullName);
+                    getline(cin, name);
+                    employee[i].setName(fullname);
                     break;
-                 }                    
+                 }   
                 case 3: {
+                    string surname;
+                    cout << "\t\t\t2. Enter New Surname : ";
+                    cin.ignore();
+                    getline(cin, surname);
+                    employee[i].setSurname(surname);
+                    break;
+                }
+                case 4: {
                     int workYears;
                     cout << "\t\t\t2. Enter New years : ";
                     cin >> workYears;
                     employee[i].setWorkYears(workYears);
                     break;
                  }
-                case 4: {
+                case 5: {
                     string position;
                     cout << "\t\t\t2. Enter New Position : ";
                     cin >> position;
@@ -288,13 +304,13 @@ void updateEmployee(vector<Employee>& employee) {
 }
 
 void deleteEmployee(vector<Employee>& employee) {
-    string fullName;
+    string fullname;
     cout << "Enter Full Name To Delete : ";
     cin.ignore();
-    getline(cin, fullName);
+    getline(cin, fullname);
 
     for (int i = 0;i < employee.size();i++) {
-        if (employee[i].getfullName() == fullName) {
+        if ((employee[i].getName() + ' ' + employee[i].getSurname()) == fullname) {
             employee.erase((employee.begin() + i));
             cout << "\t\tEmployee Remove Successfully" << endl;
         }
@@ -304,10 +320,10 @@ void deleteEmployee(vector<Employee>& employee) {
 int main()
 {
     vector<Employee> employee;
-    employee.push_back(Employee(1, "John Doe", 20, "CEO"));    
-    employee.push_back(Employee(2, "Anna Nowak", 1, "Developer"));    
-    employee.push_back(Employee(3, "Janina Kowalska", 8, "Analytics"));    
-    employee.push_back(Employee(4, "Jan Kowalski", 3, "HR"));    
+    employee.push_back(Employee(1, "John", "Doe", 20, "CEO"));
+    employee.push_back(Employee(2, "Anna", "Nowak", 1, "Developer"));    
+    employee.push_back(Employee(3, "Janina", "Kowalska", 8, "Analyst"));    
+    employee.push_back(Employee(4, "Jan", "Kowalski", 3, "HR"));    
 
     char choice;
 

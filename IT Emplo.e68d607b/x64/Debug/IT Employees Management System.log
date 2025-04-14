@@ -1,2 +1,33 @@
 ﻿  IT Employees Management System.cpp
-  IT Employees Management System.vcxproj -> C:\Documents\Documents\Studia\4\С++\Employee Management System\x64\Debug\IT Employees Management System.exe
+C:\Documents\Documents\Studia\4\С++\Employee Management System\IT Employees Management System.cpp(75,1): error C2039: '=': is not a member of 'IAbstractEmployee'
+      C:\Documents\Documents\Studia\4\С++\Employee Management System\IT Employees Management System.cpp(9,13):
+      see declaration of 'IAbstractEmployee'
+      C:\Documents\Documents\Studia\4\С++\Employee Management System\IT Employees Management System.cpp(75,1):
+      This diagnostic occurred in the compiler generated function 'Employee &Employee::operator =(Employee &&)'
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\include\xutility(5168,20):
+      see reference to function 'Employee &Employee::operator =(Employee &&)'
+  
+C:\Documents\Documents\Studia\4\С++\Employee Management System\IT Employees Management System.cpp(75,1): error C2665: 'Employee::operator =': no overloaded function could convert all the argument types
+      C:\Documents\Documents\Studia\4\С++\Employee Management System\IT Employees Management System.cpp(75,1):
+      could be 'Employee &Employee::operator =(Employee &&)'
+          C:\Documents\Documents\Studia\4\С++\Employee Management System\IT Employees Management System.cpp(75,1):
+          'Employee &Employee::operator =(Employee &&)': cannot convert argument 1 from 'IAbstractEmployee' to 'Employee &&'
+              C:\Documents\Documents\Studia\4\С++\Employee Management System\IT Employees Management System.cpp(75,1):
+              Reason: cannot convert from 'IAbstractEmployee' to 'Employee'
+              C:\Documents\Documents\Studia\4\С++\Employee Management System\IT Employees Management System.cpp(75,1):
+              No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+      C:\Documents\Documents\Studia\4\С++\Employee Management System\IT Employees Management System.cpp(75,1):
+      or       'Employee &Employee::operator =(const Employee &)'
+          C:\Documents\Documents\Studia\4\С++\Employee Management System\IT Employees Management System.cpp(75,1):
+          'Employee &Employee::operator =(const Employee &)': cannot convert argument 1 from 'IAbstractEmployee' to 'const Employee &'
+              C:\Documents\Documents\Studia\4\С++\Employee Management System\IT Employees Management System.cpp(75,1):
+              Reason: cannot convert from 'IAbstractEmployee' to 'const Employee'
+              C:\Documents\Documents\Studia\4\С++\Employee Management System\IT Employees Management System.cpp(75,1):
+              No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+      C:\Documents\Documents\Studia\4\С++\Employee Management System\IT Employees Management System.cpp(75,1):
+      while trying to match the argument list '(IAbstractEmployee)'
+      C:\Documents\Documents\Studia\4\С++\Employee Management System\IT Employees Management System.cpp(75,1):
+      This diagnostic occurred in the compiler generated function 'Employee &Employee::operator =(Employee &&)'
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\include\xutility(5168,20):
+      see reference to function 'Employee &Employee::operator =(Employee &&)'
+  

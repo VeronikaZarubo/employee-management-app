@@ -54,7 +54,7 @@ public:
     int getWorkYears() {
         return workYears;
     }
-    void Work() {
+    virtual void Work() {
         cout << name << " " << surname << " is working..." << endl;
     }
     void AskForPromotion() override {
@@ -80,7 +80,7 @@ class CEO :public Employee {
 public:
     CEO(int rollno, string name, string surname, int workYears, string position) :
         Employee(rollno, name, surname, workYears, position) {}
-    void Work() {
+    void Work() override {
         cout << name << " " << surname << " is making corporate decisions, managing operations..." << endl;
     }
 };
@@ -89,7 +89,7 @@ class Analyst :public Employee {
 public:
     Analyst(int rollno, string name, string surname, int workYears, string position) :
         Employee(rollno, name, surname, workYears, position) {}
-    void Work() {
+    void Work() override {
         cout << name << " " << surname << " is using math, statistics, and machine learning to find meaningful patterns in data..." << endl;
     }
 };
@@ -98,7 +98,7 @@ class Developer :public Employee {
 public:
     Developer(int rollno, string name, string surname, int workYears, string position) :
         Employee(rollno, name, surname, workYears, position) {}
-    void Work() {
+    void Work() override {
         cout << name << " " << surname << " is designing, programming, building, deploying and maintaining software..." << endl;
     }
 };
@@ -107,7 +107,7 @@ class Tester :public Employee {
 public:
     Tester(int rollno, string name, string surname, int workYears, string position) :
         Employee(rollno, name, surname, workYears, position) {}
-    void Work() {
+    void Work() override{
         cout << name << " " << surname << " is running various tests on software systems to ensure that they function according to the required standards..." << endl;
     }
 };
@@ -116,7 +116,7 @@ class HR :public Employee {
 public:
     HR(int rollno, string name, string surname, int workYears, string position) :
         Employee(rollno, name, surname, workYears, position) {}
-    void Work() {
+    void Work() override {
         cout << name << " " << surname << " is managing the entire employee lifecycle — recruitment, onboarding, training, termination or retirement..." << endl;
     }
 };

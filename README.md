@@ -4,6 +4,10 @@ A console application made with C++ in Visual Studio.
 
 Problem/goal:
 There is a goal under realisation within this project: to overcome the problem of the HR menagers with workers coordination, their data storage and deciding, whether a certain worker deserves a promotion. To fullfill this goal there is a necessity to create informatic tool that will be a solution for this certain problem. Taking under consideration the need to store and process data, I have decided to write code using the OOP principles. 
+Target product group: HR menagers of IT companies
+Enviroment for program creation: VisualStudio 2022
+Programming language: C++
+
 
 # Functionality
 

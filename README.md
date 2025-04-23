@@ -24,13 +24,19 @@ By choosing various options via interactive menu, you have access to the folowin
 
 -- User display
 
-![image](https://github.com/user-attachments/assets/a8b4e258-18b2-405b-8462-01e4c836c08a)
+![image](https://github.com/user-attachments/assets/c3ab44c4-c2db-44bd-b5f4-4bf7e23d499a)
 
 -- User search
 
+![image](https://github.com/user-attachments/assets/5edf9018-0ce1-4ce5-95d7-f71b59e2af5e)
+
 -- User update
 
+![image](https://github.com/user-attachments/assets/02e83c16-0827-4be7-a70d-71693ad75f91)
+
 -- User deletion
+
+![image](https://github.com/user-attachments/assets/6ac34e89-d34a-4081-9aef-5349346baa63)
 
 
 This project is implemented meaning that project goals are completed.
